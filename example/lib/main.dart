@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -23,8 +23,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String selectedName;
-  IconData selectedIcon;
+  String? selectedName;
+  IconData? selectedIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: <Widget>[
-                selectedIcon != null ? Icon(selectedIcon, size: 48.0) : Container(),
-                Flexible(child: Text(
+                selectedIcon != null
+                    ? Icon(selectedIcon, size: 48.0)
+                    : Container(),
+                Flexible(
+                    child: Text(
                   selectedName ?? "Select an icon",
-                  style: Theme.of(context).textTheme.subhead,
+                  style: Theme.of(context).textTheme.titleMedium,
                   overflow: TextOverflow.ellipsis,
                 )),
               ],
@@ -56,10 +59,14 @@ class _MyHomePageState extends State<MyHomePage> {
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
                   selectedName = OMIcons.codePoints.keys.toList()[index];
-                  selectedIcon = IconData(OMIcons.codePoints[selectedName], fontFamily: 'outline_material_icons', fontPackage: 'outline_material_icons');
+                  selectedIcon = IconData(OMIcons.codePoints[selectedName]!,
+                      fontFamily: 'outline_material_icons',
+                      fontPackage: 'outline_material_icons');
                   setState(() {});
                 },
-                child: Icon(IconData(OMIcons.codePoints.values.toList()[index], fontFamily: 'outline_material_icons', fontPackage: 'outline_material_icons')),
+                child: Icon(IconData(OMIcons.codePoints.values.toList()[index],
+                    fontFamily: 'outline_material_icons',
+                    fontPackage: 'outline_material_icons')),
               ),
             ),
           ),

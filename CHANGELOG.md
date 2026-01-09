@@ -1,3 +1,9 @@
+## [0.1.2] - 2026/01/09
+
+* Migrated to Dart 3.
+* Fixed null safety and deprecated API issues in example.
+* Added tests.
+
 ## [0.1.1] - 13/10/2019
 
 * Updated icon image urls in docs
